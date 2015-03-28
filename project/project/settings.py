@@ -27,11 +27,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     # Third part
-    'south',
     'rest_framework',
     'rest_framework_swagger',
     'autoslug',
-    'django_seo_js',
 
     # Apps
     'core',
@@ -57,36 +55,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.doc.XViewMiddleware',
     'django.middleware.common.CommonMiddleware',
 )
-
-# Django SEO JS settings
-MIDDLEWARE_CLASSES = (
-    'django_seo_js.middleware.HashBangMiddleware',  # If you're using #!
-    'django_seo_js.middleware.UserAgentMiddleware',  # If you want to detect by user agent
-) + MIDDLEWARE_CLASSES
-
-SEO_JS_ENABLED = True
-SEO_JS_BACKEND = 'django_seo_js.backends.PrerenderHosted'
-SEO_JS_PRERENDER_URL = 'http://localhost:8555/'  # Note trailing slash.
-SEO_JS_PRERENDER_RECACHE_URL = 'http://localhost:8555/recache'
-
-SEO_JS_USER_AGENTS = [
-    'Googlebot',
-    'Yahoo',
-    'bingbot',
-    'Badiu',
-    'Ask Jeeves',
-    'baiduspider',
-    'twitterbot',
-    'facebookexternalhit',
-    'rogerbot',
-    'linkedinbot',
-    'embedly',
-    'quora link preview',
-    'showyoubot',
-    'outbrain',
-    'pinterest',
-    'slackbot'
-]
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
@@ -152,3 +120,5 @@ MEDIA_URL = "/media/"
 
 # Template settings
 TEMPLATE_DIRS = (os.path.join(PROJECT_DIR, 'templates'),)
+
+AUTH_USER_MODEL = 'core.UserProfile'
